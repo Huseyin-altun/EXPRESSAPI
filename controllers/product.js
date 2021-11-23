@@ -6,7 +6,7 @@ createProduct = async(req, res) => {
     if (!req.body) {
         return res.status(400).json({
             code: 1,
-            msg: 'Bir ürün bulunamadı',
+            msg: 'false',
          
         })
     }
@@ -30,7 +30,7 @@ createProduct = async(req, res) => {
         .catch(error => {
             return res.status(400).json({
                 code,
-                message: 'Veritabanına kaydedilmedi',
+                message: 'false',
             })
         })
 }
@@ -45,7 +45,7 @@ getProducts = async (req, res) => {
         if (!product.length) {
             return res
                 .status(404)
-                .json({ code: 1, msg: `Veritabanında yok` })
+                .json({ code: 1, msg: `false` })
         }
         return res.status(200).json({ code: 0, msg:'sucess',data: product })
     }).catch(err => console.log(err))
