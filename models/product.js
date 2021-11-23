@@ -5,6 +5,7 @@ const Product= new Schema(
     {
         name: { type: String, required: true },
         stock: { type: Number, required: true },
+        created_date: { type: Date, default: Date.now },
        
     },
     

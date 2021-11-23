@@ -44,9 +44,9 @@ getProducts = async (req, res) => {
         if (!product.length) {
             return res
                 .status(404)
-                .json({ success: 1, msg: `Veritabanında yok` })
+                .json({ code: 1, msg: `Veritabanında yok` })
         }
-        return res.status(200).json({ success: true, data: product })
+        return res.status(200).json({ code: 0, data: product })
     }).catch(err => console.log(err))
 }
 
