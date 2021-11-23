@@ -1,6 +1,6 @@
 const Product = require('../models/product')
 
-createProduct = (req, res) => {
+createProduct = async(req, res) => {
     
 
     if (!req.body) {
@@ -14,16 +14,17 @@ createProduct = (req, res) => {
     const product = new Product(req.body)
 
     if (!product) {
-        return res.status(400).json({ code: 1, msg: err })
+        return res.status(400).json({ code: 1, msg: msg })
     }
 
-    product
+    await  product
         .save()
         .then(() => {
             return res.status(201).json({
                 code: 0,
-                id: product._id,
-                msg: 'Veri tabanına kaydedildi',
+                msg: 'sucess',
+              data:product
+               
             })
         })
         .catch(error => {
@@ -46,7 +47,7 @@ getProducts = async (req, res) => {
                 .status(404)
                 .json({ code: 1, msg: `Veritabanında yok` })
         }
-        return res.status(200).json({ code: 0, data: product })
+        return res.status(200).json({ code: 0, msg:'sucess',data: product })
     }).catch(err => console.log(err))
 }
 
